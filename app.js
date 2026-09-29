@@ -128,6 +128,12 @@ if (TOTAL_POIN >= 100) {
 console.log("Benefit : " + BENEFIT + " TierMember : " + TIERMEMBER);
 
 // 4. Tampilkan ringkasan hasil member (nama, total poin, tier, benefit) via dialog alert().
+alert(
+    "Nama : " + NAMA_PELANGGAN + "\n" + // \n artinya enter
+    "Total Poin : " + TOTAL_POIN + "\n" +  
+    "TierMember : " + TIERMEMBER + "\n" +
+    "Benefit : " + BENEFIT
+);
 
 // ============================================================
 // AKTIVITAS 5: Function — Membuat Fungsi yang Bisa Dipakai Ulang
@@ -136,18 +142,43 @@ console.log("Benefit : " + BENEFIT + " TierMember : " + TIERMEMBER);
 // TODO 5A:
 // Buat fungsi "hitungTotalPoin(p1, p2, p3)" yang menerima 3 parameter nilai poin,
 // menjumlahkannya, dan mengembalikan (return) nilai total penjumlahannya.
-
+function hitungTotalPoin(p1, p2, p3) {
+    return p1 + p2 + p3;
+}
 
 // TODO 5B:
 // Buat fungsi "tentukanTierMember(poin)" yang menerima 1 parameter nilai poin,
 // dan mengembalikan (return) string nama tier beserta keterangannya.
-
+function tentukanTierMember(poin) {
+    if (poin >= 100) {
+        return { tier: "Platinum", benefit: "Diskon 20% + Gratis 1 Minum Signature" };
+    } else if (poin >= 70) {
+        return { tier: "Gold", benefit: "Diskon 10% di setiap transaksi" };
+    } else if (poin >= 40) {
+        return { tier: "Silver", benefit: "Diskon 5% untuk menu minuman" };
+    } else {
+        return { tier: "Bronze", benefit: "Member Reguler (kumpulkan poin untuk naik tier)" }
+    }
+}
 
 // TODO 5C:
 // Buktikan bahwa fungsi di atas bisa dipakai ulang (reusable):
 // 1. Hitung total poin dan tentukan tier untuk simulasi Pelanggan B (misal poin: 35, 25, 20).
+let totalPoinB = hitungTotalPoin(35, 25, 20);
 // 2. Hitung total poin dan tentukan tier untuk simulasi Pelanggan C (misal poin: 15, 10, 5).
+let totalPoinC = hitungTotalPoin(15, 10, 5);
 // 3. Cetak data Pelanggan B dan C ke tab Console.
+console.log("RINCIAN POIN: Pelanggan B");
+console.log("Total Poin: " + totalPoinB);
+let tierB = tentukanTierMember(totalPoinB); 
+console.log("Tier Member: " + tierB.tier);
+console.log("Benefit: " + tierB.benefit);
+
+console.log("RINCIAN POIN: Pelanggan C");
+console.log("Total Poin: " + totalPoinC);
+let tierC = tentukanTierMember(totalPoinC); 
+console.log("Tier Member: " + tierC.tier);
+console.log("Benefit: " + tierC.benefit);
 
 // ============================================================
 // AKTIVITAS 6: Array & For Loop — Daftar Menu Rekomendasi
